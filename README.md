@@ -12,6 +12,8 @@ Applet is compatible with Mobile/web interface
 #### How to use?
 1. Enter/paste Long link inside and press the Shrink it button
 2. Resultant shortened link can be found subsequently
+
+
 ![image](https://user-images.githubusercontent.com/54022757/189534711-ae8b4474-4461-4979-b6a3-a8c634500306.png)
 
 
