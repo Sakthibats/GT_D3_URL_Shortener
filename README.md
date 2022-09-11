@@ -6,7 +6,7 @@
 - EJS
 - NodeJS
 - MySQL - ClearDB MySQL from Heroku
-- Heroku
+- Heroku - config file setup and hosting
 
 #### How to use?
 1. Enter/paste Long link inside and press the Shrink it button
