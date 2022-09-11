@@ -1,4 +1,3 @@
-const { response } = require('express')
 const express = require('express')
 const mysql = require("mysql2")
 const config = require("./config")
@@ -25,10 +24,12 @@ app.get('/app/:shorturl', (req, res)=>{
 	conn.query(sql,function(err, results, fields) {
 		if (err){
 			console.log(err)
+			res.render('index',{msg:shorturlid, link:`/app/${shorturlid}`, error: err})
 		}
 		else{
+			// Results holds all values queried. If none match shortURL=> empty array will be returned
 			if (results.length!=0){
-				console.log('helo')
+				console.log(`Redirected to ${results[0].LongUrl}`)
 				res.redirect(results[0].LongUrl)
 			}else{
 				res.render('index',{msg:shorturlid, link:`/app/${shorturlid}`, error:'ShortURL not in Database'})
@@ -38,14 +39,16 @@ app.get('/app/:shorturl', (req, res)=>{
     conn.end()    
 })
 
+// Receives LongURL via post req body and generates a ShortURL then stores in MySQL backend service
 app.post('/shrinkedURLs', async(req, res)=>{
     let uniqueID = Math.random().toString(36).replace(/[^a-z0-9]/gi,'').substring(2,10)
     let sql = `INSERT INTO url(LongUrl, ShortUrl) VALUES('${req.body.fullurl}','${uniqueID}');`
     const conn = mysql.createConnection(config.db)
-	// simple query
-	conn.query(sql,function(err, results, fields) {
+	conn.query(sql,function(err) {
 		if (err){
 			console.log(err)
+		}else{
+			console.log("Pushed new row to MySQL data base")
 		}
 	});
 
@@ -55,5 +58,5 @@ app.post('/shrinkedURLs', async(req, res)=>{
 
 // Listen on assigned port
 app.listen(app.get('port'), function () {
-    console.log('listening on port ' + app.get('port'));
+    console.log(`URL Shortening service listening at http://localhost:${app.get('port')}`);
 });
