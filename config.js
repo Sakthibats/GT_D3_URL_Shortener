@@ -6,5 +6,4 @@ const config = {
         database: process.env.database
     }
   };
-  
   module.exports = config;
