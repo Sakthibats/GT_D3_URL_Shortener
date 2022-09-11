@@ -15,7 +15,10 @@
             <textarea type="url" name="fullurl" id="fullurl" class="form-control" style="min-width: 100%" placeholder="Enter Long URL" required></textarea>
             <button type="submit" style="margin-top:10px" class="btn btn-info">Shrink it</button>
         </form>
-        <h2>New Link: <a href=<%= link %>> <%=msg%> </a> </h2>
+        <% if(msg!=''){ %>
+            <h2>New Link: <a href=<%= link %> id="shortlink" value='http://localhost:5000/redirect/${<%=msg%>}' > http://localhost:5000/redirect/<%=msg%> </a> </h2>
+            <button class="btn btn-xs btn-warning" onclick="location.href = '/';"> Back to Home </button>
+        <% } %>
     </div>
     <script type="text/javascript">
         var error = '<%= error %>' ;
