@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Link Shrink</title>
+</head>
+<body>
+    <div class="container">
+        <h1>URL Shortening Service</h1>
+        <form action="/shrinkedURLs" method="POST" class="my-4">
+            <label for="fullurl" class="sr-only">URL</label>
+            <textarea type="url" name="fullurl" id="fullurl" class="form-control" style="min-width: 100%" placeholder="Enter Long URL" required></textarea>
+            <button type="submit" style="margin-top:10px" class="btn btn-info">Shrink it</button>
+        </form>
+        <h2>New Link: <a href=<%= link %>> <%=msg%> </a> </h2>
+    </div>
+    <script type="text/javascript">
+        var error = '<%= error %>' ;
+        if(error!='null'){  
+            alert('error: ' + error);
+        }
+    </script>
+</body>
+</html>
