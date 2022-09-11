@@ -1,6 +1,7 @@
 ## D3 URL Shortening Service Assignment
 
 #### Link to applet: https://mysqldbgovt.herokuapp.com/
+Applet is compatible with Mobile/web interface
 
 #### Tech Stacks used
 - EJS
